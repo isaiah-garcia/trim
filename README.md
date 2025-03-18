@@ -1,161 +1,125 @@
-[![Lighthouse CI](https://github.com/w3bdesign/nextjs-woocommerce/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/w3bdesign/nextjs-woocommerce/actions/workflows/lighthouse.yml)
-[![Playwright Tests](https://github.com/w3bdesign/nextjs-woocommerce/actions/workflows/playwright.yml/badge.svg)](https://github.com/w3bdesign/nextjs-woocommerce/actions/workflows/playwright.yml)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/29de6847b01142e6a0183988fc3df46a)](https://app.codacy.com/gh/w3bdesign/nextjs-woocommerce?utm_source=github.com&utm_medium=referral&utm_content=w3bdesign/nextjs-woocommerce&utm_campaign=Badge_Grade_Settings)
-[![CodeFactor](https://www.codefactor.io/repository/github/w3bdesign/nextjs-woocommerce/badge)](https://www.codefactor.io/repository/github/w3bdesign/nextjs-woocommerce)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=w3bdesign_nextjs-woocommerce&metric=alert_status)](https://sonarcloud.io/dashboard?id=w3bdesign_nextjs-woocommerce)
+<p align="center">
+  <a href="https://www.medusajs.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
+    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
+    </picture>
+  </a>
+</p>
 
-![bilde](https://github.com/user-attachments/assets/08047025-0950-472a-ae7d-932c7faee1db)
+<h1 align="center">
+  Medusa Next.js Starter Template
+</h1>
 
-## Star History
+<p align="center">
+Combine Medusa's modules for your commerce backend with the newest Next.js 15 features for a performant storefront.</p>
 
-[![Star History Chart](https://api.star-history.com/svg?repos=w3bdesign/nextjs-woocommerce&type=Date)](https://star-history.com/#w3bdesign/nextjs-woocommerce&Date)
+<p align="center">
+  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
+  </a>
+  <a href="https://discord.gg/xpCwq3Kfn8">
+    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
+  </a>
+  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
+    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
+  </a>
+</p>
 
-# Next.js Ecommerce site with WooCommerce backend
+### Prerequisites
 
-## Live URL: <https://next-woocommerce.dfweb.no>
+To use the [Next.js Starter Template](https://medusajs.com/nextjs-commerce/), you should have a Medusa server running locally on port 9000.
+For a quick setup, run:
 
-## Table Of Contents (TOC)
+```shell
+npx create-medusa-app@latest
+```
 
-- [Installation](#Installation)
-- [Features](#Features)
-- [Lighthouse Performance Monitoring](#lighthouse-performance-monitoring)
-- [Issues](#Issues)
-- [Troubleshooting](#Troubleshooting)
-- [TODO](#TODO)
-- [Future Improvements](SUGGESTIONS.md)
+Check out [create-medusa-app docs](https://docs.medusajs.com/learn/installation) for more details and troubleshooting.
 
-## Installation
+# Overview
 
-1.  Install and activate the following required plugins, in your WordPress plugin directory:
+The Medusa Next.js Starter is built with:
 
-- [woocommerce](https://wordpress.org/plugins/woocommerce) Ecommerce for WordPress.
-- [wp-graphql](https://wordpress.org/plugins/wp-graphql) Exposes GraphQL for WordPress.
-- [wp-graphql-woocommerce](https://github.com/wp-graphql/wp-graphql-woocommerce) Adds WooCommerce functionality to a WPGraphQL schema.
-- [wp-algolia-woo-indexer](https://github.com/w3bdesign/wp-algolia-woo-indexer) WordPress plugin coded by me. Sends WooCommerce products to Algolia. Required for search to work.
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Medusa](https://medusajs.com/)
 
-Optional plugin:
+Features include:
 
-- [headless-wordpress](https://github.com/w3bdesign/headless-wp) Disables the frontend so only the backend is accessible. (optional)
+- Full ecommerce support:
+  - Product Detail Page
+  - Product Overview Page
+  - Product Collections
+  - Cart
+  - Checkout with Stripe
+  - User Accounts
+  - Order Details
+- Full Next.js 15 support:
+  - App Router
+  - Next fetching/caching
+  - Server Components
+  - Server Actions
+  - Streaming
+  - Static Pre-Rendering
 
-The current release has been tested and is confirmed working with the following versions:
+# Quickstart
 
-- WordPress version 6.6.2
-- WooCommerce version 7.4.0
-- WP GraphQL version 1.13.8
-- WooGraphQL version 0.12.0
-- WPGraphQL CORS version 2.1
+### Setting up the environment variables
 
-2.  For debugging and testing, install either:
+Navigate into your projects directory and get your environment variables ready:
 
-    <https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/> (Firefox)
+```shell
+cd nextjs-starter-medusa/
+mv .env.template .env.local
+```
 
-    <https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm> (Chrome)
+### Install dependencies
 
-3.  Make sure WooCommerce has some products already
+Use Yarn to install all dependencies.
 
-4.  Clone or fork the repo and modify `.env.example` and rename it to `.env`
+```shell
+yarn
+```
 
-    Then set the environment variables accordingly in Vercel or your preferred hosting solution.
+### Start developing
 
-    See <https://vercel.com/docs/environment-variables>
+You are now ready to start up your project.
 
-5.  Modify the values according to your setup
+```shell
+yarn dev
+```
 
-6.  Start the server with `npm run dev`
+### Open the code and start customizing
 
-7.  Enable COD (Cash On Demand) payment method in WooCommerce
+Your site is now running at http://localhost:8000!
 
-8.  Add a product to the cart
+# Payment integrations
 
-9.  Proceed to checkout (Gå til kasse)
+By default this starter supports the following payment integrations
 
-10. Fill in your details and place the order
+- [Stripe](https://stripe.com/)
 
-## Features
+To enable the integrations you need to add the following to your `.env.local` file:
 
-- Next.js version 15.1.7
-- React version 18.3.1
-- Typescript
-- Tests with Playwright
-- Connect to Woocommerce GraphQL API and list name, price and display image for products
-- Support for simple products and variable products
-- Cart handling and checkout with WooCommerce (Cash On Delivery only for now)
-- Algolia search (requires [algolia-woo-indexer](https://github.com/w3bdesign/algolia-woo-indexer))
-- Meets WCAG accessibility standards where possible
-- Placeholder for products without images
-- Apollo Client with GraphQL
-- React Hook Form
-- Native HTML5 form validation
-- Animations with Framer motion, Styled components and Animate.css
-- Loading spinner created with Styled Components
-- Shows page load progress with Nprogress during navigation
-- Fully responsive design
-- Category and product listings
-- Show stock status
-- Pretty URLs with builtin Nextjs functionality
-- Tailwind 3 for styling
-- JSDoc comments
-- Automated Lighthouse performance monitoring
-  - Continuous performance, accessibility, and best practices checks
-  - Automated reports on every pull request
-  - Performance metrics tracking for:
-    - Performance score
-    - Accessibility compliance
-    - Best practices adherence
-    - SEO optimization
-    - Progressive Web App readiness
-- Product filtering:
-  - Dynamic color filtering using Tailwind's color system
-  - Mobile-optimized filter layout
-  - Accessible form controls with ARIA labels
-  - Price range slider
-  - Size and color filters
-  - Product type categorization
-  - Sorting options (popularity, price, newest)
+```shell
+NEXT_PUBLIC_STRIPE_KEY=<your-stripe-public-key>
+```
 
-## Lighthouse Performance Monitoring
+You'll also need to setup the integrations in your Medusa server. See the [Medusa documentation](https://docs.medusajs.com) for more information on how to configure [Stripe](https://docs.medusajs.com/resources/commerce-modules/payment/payment-provider/stripe#main).
 
-This project uses automated Lighthouse testing through GitHub Actions to ensure high-quality web performance. On every pull request:
+# Resources
 
-- Performance, accessibility, best practices, and SEO are automatically evaluated
-- Results are posted directly to the pull request
-- Minimum score thresholds are enforced for:
-  - Performance: Analyzing loading performance, interactivity, and visual stability
-  - Accessibility: Ensuring WCAG compliance and inclusive design
-  - Best Practices: Validating modern web development standards
-  - SEO: Checking search engine optimization fundamentals
-  - PWA: Assessing Progressive Web App capabilities
+## Learn more about Medusa
 
-View the latest Lighthouse results in the GitHub Actions tab under the "Lighthouse Check" workflow.
+- [Website](https://www.medusajs.com/)
+- [GitHub](https://github.com/medusajs)
+- [Documentation](https://docs.medusajs.com/)
 
-## Troubleshooting
+## Learn more about Next.js
 
-### I am getting a cart undefined error or other GraphQL errors
-
-Check that you are using the 0.12.0 version of the [wp-graphql-woocommerce](https://github.com/wp-graphql/wp-graphql-woocommerce) plugin
-
-### The products page isn't loading
-
-Check the attributes of the products. Right now the application requires Size and Color.
-
-## Issues
-
-Overall the application is working as intended, but it has not been tested extensively in a production environment.
-More testing and debugging is required before deploying it in a production environment.
-
-With that said, keep the following in mind:
-
-- Currently only simple products and variable products work without any issues. Other product types are not known to work.
-- Only Cash On Delivery (COD) is currently supported. More payment methods may be added later.
-
-This project is tested with BrowserStack.
-
-## TODO
-
-- Implement UserRegistration.component.tsx in a registration page
-- Add user dashboard with order history
-- Add Cloudflare Turnstile on registration page
-- Ensure email is real on registration page
-- Add total to cart/checkout page
-- Copy billing address to shipping address
-- Hide products not in stock
+- [Website](https://nextjs.org/)
+- [GitHub](https://github.com/vercel/next.js)
+- [Documentation](https://nextjs.org/docs)
